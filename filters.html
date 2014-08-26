@@ -1,0 +1,56 @@
+<html>
+<head>
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
+
+    <script src="filtersController.js"></script>
+
+    <body ng-app="voyagerSearch" class="container" ng-controller="FiltersCtrl" style="padding: 10px">
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div>
+                        <h4>Solr Filters Demo</h4>
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label pull-left">SOLR URL:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" ng-model="solrUrl" class="form-control">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="col-sm-3">
+                        <accordion close-others="oneAtATime">
+                            <accordion-group ng-repeat="filter in filters" heading="{{filter.value}}">
+                                <button ng-click="filterResults(facet)" ng-repeat="facet in filter.facets" type="button" class="btn btn-sm btn-default btn-block" style="padding-left: 5px; text-align: left; white-space: normal; border:0px" >
+                                    {{facet.name}}
+                                </button>
+                            </accordion-group>
+                        </accordion>
+                    </div>
+                    <div class="col-sm-9">
+                        <table class="table">
+                            <thead>
+                            <th>Name</th> <th>Type</th> <th>Size</th>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="doc in docs">
+                                <td width="50%">{{doc.name}}</td>
+                                <td width="40%">{{doc.format}}</td>
+                                <td width="10%">{{doc.bytes}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</head>
+</html>
