@@ -3,7 +3,7 @@ angular.module('voyagerSearch',[])
 
         'use strict';
 
-        $scope.solrUrl = "http://voyagerdev.com/daily/";
+        $scope.solrUrl = "http://voyagerdev.com/voyager/";
 
         var getInput = function (query) {
             var input = '*:*';
