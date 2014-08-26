@@ -3,7 +3,7 @@ angular.module('voyagerSearch',['ui.bootstrap'])
 
         'use strict';
 
-        $scope.solrUrl = "http://voyagerdev.com/daily/";
+        $scope.solrUrl = "http://voyagerdev.com/voyager/";
 
         function _isEven (someNumber) {
             return (someNumber % 2 === 0) ? true : false;
