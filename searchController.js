@@ -3,7 +3,7 @@ angular.module('voyagerSearch',[])
 
         'use strict';
 
-        $scope.solrUrl = "http://voyagerdev.com/daily/";
+        $scope.solrUrl = "http://voyagerdev.com/voyager/";
 
         var getInput = function (query) {
             var input = '*:*';
@@ -28,9 +28,15 @@ angular.module('voyagerSearch',[])
             });
         }
 
-        _search();
-
         $scope.searchClick = function() {
             _search();
         };
+
+        var f = parent.frames['voyager-search-widget'];
+        if (f) {
+            $scope.solrUrl = f.getAttribute("data-solr-url");
+        }
+
+        _search();
+
     });
