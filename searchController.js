@@ -37,6 +37,8 @@ angular.module('voyagerSearch',[])
             if (f) {
                 $scope.solrUrl = f.getAttribute("data-solr-url");
             }
+        } catch (e) {
+
         }
 
         _search();
